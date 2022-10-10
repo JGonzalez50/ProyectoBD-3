@@ -8,7 +8,6 @@ export const createUser = async (req, res) => {
     //const rolesFound = await Role.find({ name: { $in: roles } });
 
     // creating a new User
-    console.log(req.body)
     const user = new User({
       username,
       email,
@@ -49,6 +48,8 @@ export const updateUserById= async (req, res) => {
             password
           } = req.body;
       
+          console.log(req.body)
+          console.log(req.params)
           const { _id } = req.params;
       
           const User_upd = await User.findOneAndUpdate(
