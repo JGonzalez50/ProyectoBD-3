@@ -5,7 +5,9 @@ import { checkExistingUser } from "../middlewares/verifySignUp";
 
 const router = Router();
 
-router.post("/", [verifyToken, isAdmin, checkExistingUser], userCtrl.createUser);
 router.get("/", userCtrl.getUsers);
+router.post("/",  userCtrl.createUser);
+router.put('/:_id', userCtrl.updateUserById);
+router.delete('/:_id', userCtrl.deleteUserById);
 
 export default router;
