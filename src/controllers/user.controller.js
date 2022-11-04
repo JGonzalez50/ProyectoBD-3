@@ -103,3 +103,33 @@ try {
 }
 
 }
+
+export const createUsersTransaccion = async (req, res) => {
+  try {
+    const { username, email, password } = req.body;
+
+    //const rolesFound = await Role.find({ name: { $in: roles } });
+    session.startTransaction()
+    /*await userCollection.insertOne({
+        name: _req.body.name
+    }, {
+        session
+    })*/
+
+    // encrypting password
+    //user.password = await User.encryptPassword(user.password);
+
+    // saving the new user
+    const savedUser = await user.save();
+    session.commitTransaction()
+
+    return res.status(200).json({
+      _id: savedUser._id,
+      username: savedUser.username,
+      email: savedUser.email
+    });
+  } catch (error) {
+    session.abortTransaction()
+    console.error(error);
+  }
+};

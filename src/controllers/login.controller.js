@@ -33,6 +33,6 @@ export async function logIn(req, res, next) {
     });*/
     res.header("auth-token", "HOLA").json({
         error: null,
-        data: { "token":"HOLA papis" }
+        data: { "token":"Usuario Autenticado" }
     });
 }

@@ -6,6 +6,7 @@ import { checkExistingUser } from "../middlewares/verifySignUp";
 const router = Router();
 
 router.get("/", userCtrl.getUsers);
+router.post("/transaccion", userCtrl.createUsersTransaccion);
 router.post("/",  userCtrl.createUser);
 router.put('/:id', userCtrl.updateUserById);
 router.delete('/:_id', userCtrl.deleteUserById);
